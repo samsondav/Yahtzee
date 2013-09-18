@@ -62,21 +62,44 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void finalTurn(int player) {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex = display.waitForPlayerToSelectCategory();
-		// update selected category on scorecard with appropriate score for the roll
+		updateScorecard(categoryIndex, player);
+	}
+	
+	/* Monstrous method that updates the scorecard based on
+	 * current state of dice, category index and player index
+	 * 
+	 * @param categoryIndex - the player's chosen category
+	 * @param player - the index of the current player
+	 */
+	private void updateScorecard(int categoryIndex, int player) {
+		int score = 0;
+		
+		// case for Ones, Twos.... Sixes
 		if (categoryIndex <= 6) {
-			scorecard[player - 1][categoryIndex - 1] = scoreOnesToSixes(categoryIndex);
+			for (int i = 0; i < N_DICE; i++) {
+				if (dice[i] == categoryIndex) {
+					score += categoryIndex;
+				}
+			}
+		}
+
+		// case for three of a kind
+		if (categoryIndex == 7) {
+			score = sumDice();
+		}
+		
+		// update appropriate element of scorecard
+		scorecard[player - 1][categoryIndex - 1] = score;
+
+	}
+	
+	/* Return sum of all values on the dice */
+	private int sumDice() {
+		for (int i = 0; i < N_DICE; i++) {
+			
 		}
 	}
 	
-	private int scoreOnesToSixes(int categoryIndex) {
-		int score = 0;
-		for (int i = 0; i < N_DICE; i++) {
-			if (dice[i] == categoryIndex) {
-				score += categoryIndex;
-			}
-		}
-		return score;
-	}
 	/* Roll dice and update display */
 	private void rollAllDice() {
 		for (int i = 0; i < N_DICE; i++) {
