@@ -57,6 +57,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private RandomGenerator rgen = new RandomGenerator();
 	
 	// There are only one set of dice in the game, so it makes sense to have this as a class-wide object
-	private int[] dice;
-
+	private int[] dice = new int[N_DICE];
+	
 }
