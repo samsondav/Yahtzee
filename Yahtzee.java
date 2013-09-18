@@ -58,7 +58,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.waitForPlayerToSelectDice();
 	}
 	
-	/* Print message and wait for user to select category */
+	/* Print message, wait for user to select category and update scorecard */
 	private void finalTurn(int player) {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex = display.waitForPlayerToSelectCategory();
