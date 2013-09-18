@@ -36,7 +36,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private void printWelcomeMessage(String name) {
-		display.printMessage(name + "\'s turn. Click \"Roll Dice\" button to roll the dice.");
+		display.printMessage(name + "\'s turn! Click \"Roll Dice\" button to roll the dice.");
 	}
 		
 /* Private instance variables */
