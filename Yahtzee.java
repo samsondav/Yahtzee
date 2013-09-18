@@ -41,9 +41,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 	}
 	
-	/* Initialises the scorecard based on the number of players */
+	/* Initialises the scorecard based on nPlauers
+	 * and 'zeroes' all cells to UNSCORED_VALUE
+	 */
 	private void initScorecard() {
 		scorecard = new int[nPlayers][N_CATEGORIES];
+		for (int i = 0; i < nPlayers, i++) {
+			
+		}
 	}
 	
 	/* Print welcome message and wait for player input */
@@ -160,5 +165,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private int[][] scorecard;
 	// Only one player can be active at a time, so this should be a classwide variable
 	private int activePlayer;
+	
+	// the value of a cell on the scoresheet that has not yet been scored by the player
+	private static final int UNSCORED_VALUE = -1;
 	
 }
