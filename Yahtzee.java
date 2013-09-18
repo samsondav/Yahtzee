@@ -37,7 +37,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			rollSelectedDice();
 			nextTurn();
 			rollSelectedDice();
-			finalTurn();
+			finalTurn(player);
 		}
 	}
 	
@@ -59,13 +59,24 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	/* Print message and wait for user to select category */
-	private void finalTurn() {
+	private void finalTurn(int player) {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex = display.waitForPlayerToSelectCategory();
-		// update selected category on scorecard with appropriate score
-		
+		// update selected category on scorecard with appropriate score for the roll
+		if (categoryIndex <= 6) {
+			scorecard[player - 1][categoryIndex - 1] = scoreOnesToSixes(categoryIndex);
+		}
 	}
 	
+	private int scoreOnesToSixes(int categoryIndex) {
+		int score = 0;
+		for (int i = 0; i < N_DICE; i++) {
+			if (dice[i] == categoryIndex) {
+				score += categoryIndex;
+			}
+		}
+		return score;
+	}
 	/* Roll dice and update display */
 	private void rollAllDice() {
 		for (int i = 0; i < N_DICE; i++) {
