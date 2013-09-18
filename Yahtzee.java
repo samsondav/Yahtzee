@@ -84,10 +84,35 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 
 		// case for three of a kind and four of a kind
-		if (categoryIndex == 7 || categoryIndex == 8) {
+		if (categoryIndex == 9 || categoryIndex == 10) {
 			score = sumDice();
 		}
 				
+		// case for full house
+		if (categoryIndex == 11) {
+			score = 25;
+		}
+		
+		// case for small straight
+		if (categoryIndex == 12) {
+			score = 30;
+		}
+		
+		// case for large straight
+		if (categoryIndex == 13) {
+			score = 40;
+		}
+		
+		// case for yahtzee
+		if (categoryIndex == 14) {
+			score = 50;
+		}
+		
+		// case for chance
+		if (categoryIndex == 15) {
+			score = sumDice();
+		}
+		
 		// update appropriate element of scorecard
 		scorecard[player - 1][categoryIndex - 1] = score;
 
