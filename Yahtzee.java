@@ -27,6 +27,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void playGame() {
 		/* You fill this in */
+		
+		// Main player cycle for loop
+		for (int i = 1; i<= nPlayers; i++) {
+			display.waitForPlayerToClickRoll(i);
+		}
 	}
 		
 /* Private instance variables */
