@@ -31,13 +31,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 		// Main player cycle for loop
 		for (int player = 1; player <= nPlayers; player++) {
-			firstTurn(player);
+			firstTurn();
 			rollAllDice();
 			nextTurn();
 			rollSelectedDice();
 			nextTurn();
 			rollSelectedDice();
-			finalTurn(player);
+			finalTurn();
 		}
 	}
 	
@@ -47,9 +47,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	/* Print welcome message and wait for player input */
-	private void firstTurn(int player) {
-		display.printMessage(playerNames[player - 1] + "\'s turn! Click \"Roll Dice\" button to roll the dice.");
-		display.waitForPlayerToClickRoll(player);
+	private void firstTurn() {
+		display.printMessage(playerNames[activePlayer - 1] + "\'s turn! Click \"Roll Dice\" button to roll the dice.");
+		display.waitForPlayerToClickRoll(activePlayer);
 	}
 	
 	/* Print message and wait for user to select dice and roll again */
@@ -59,19 +59,21 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	/* Print message, wait for user to select category and update scorecard */
-	private void finalTurn(int player) {
+	private void finalTurn() {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex = display.waitForPlayerToSelectCategory();
-		updateScorecard(categoryIndex, player);
+		
+		// do not allow update if user has already recorded a score for this category
+		if (
+				updateScorecard(categoryIndex, activePlayer);
 	}
 	
 	/* Monstrous method that updates the scorecard based on
 	 * current state of dice, category index and player index
 	 * 
 	 * @param categoryIndex - the player's chosen category
-	 * @param player - the index of the current player
 	 */
-	private void updateScorecard(int categoryIndex, int player) {
+	private void updateScorecard(int categoryIndex) {
 		int score = 0;
 		
 		// case for Ones, Twos.... Sixes
@@ -114,7 +116,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 		
 		// update appropriate element of scorecard
-		scorecard[player - 1][categoryIndex - 1] = score;
+		scorecard[activePlayer - 1][categoryIndex - 1] = score;
 
 	}
 	
@@ -156,5 +158,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	// Array representing the scorecard. Each player has a column
 	// and each row corresponds to a category on the yahtzee table
 	private int[][] scorecard;
+	// Only one player can be active at a time, so this should be a classwide variable
+	private int activePlayer;
 	
 }
