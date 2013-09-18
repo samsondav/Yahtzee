@@ -35,6 +35,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			nextTurn();
 			rollDice();
 			nextTurn();
+			rollDice();
 		}
 	}
 	
