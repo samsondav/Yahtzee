@@ -31,11 +31,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		// Main player cycle for loop
 		for (int player = 1; player <= nPlayers; player++) {
 			firstTurn(player);
-			rollDice();
+			rollAllDice();
 			nextTurn();
-			rollDice();
+			rollSelectedDice();
 			nextTurn();
-			rollDice();
+			rollSelectedDice();
 		}
 	}
 	
@@ -52,9 +52,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	/* Roll dice and update display */
-	private void rollDice() {
+	private void rollAllDice() {
 		for (int i = 0; i < N_DICE; i++) {
 			dice[i] = rgen.nextInt(1, 6);
+		}
+		display.displayDice(dice);
+	}
+	
+	/* Roll only dice selected by user */
+	private void rollSelectedDice() {
+		for (int i = 0; i < N_DICE; i++) {
+			if (display.isDieSelected(i)){
+				dice[i] = rgen.nextInt(1, 6);
+			}
 		}
 		display.displayDice(dice);
 	}
