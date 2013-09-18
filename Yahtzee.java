@@ -41,12 +41,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 	}
 	
-	/* Initialises the scorecard based on nPlauers
+	/* Initialises the scorecard based on nPlayers
 	 * and 'zeroes' all cells to UNSCORED_VALUE
 	 */
 	private void initScorecard() {
 		scorecard = new int[nPlayers][N_CATEGORIES];
-		for (int i = 0; i < nPlayers, i++) {
+		for (int i = 0; i < nPlayers; i++) {
 			
 		}
 	}
