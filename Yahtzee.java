@@ -22,12 +22,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
 		}
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
+		initScorecard();
 		playGame();
 	}
 
 	private void playGame() {
 		/* You fill this in */
-		
+
 		// Main player cycle for loop
 		for (int player = 1; player <= nPlayers; player++) {
 			firstTurn(player);
@@ -36,8 +37,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			rollSelectedDice();
 			nextTurn();
 			rollSelectedDice();
-			endTurn();
+			finalTurn();
 		}
+	}
+	
+	/* Initialises the scorecard based on the number of players */
+	private void initScorecard() {
+		scorecard = new int[nPlayers][N_CATEGORIES];
 	}
 	
 	/* Print welcome message and wait for player input */
@@ -52,10 +58,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.waitForPlayerToSelectDice();
 	}
 	
-	/* */
-	private void endTurn() {
-		display.waitForPlayerToSelectCategory();
+	/* Print message and wait for user to select category */
+	private void finalTurn() {
+		display.printMessage("Select a category for this roll");
+		int categoryIndex = display.waitForPlayerToSelectCategory();
+		// update selected category on scorecard with appropriate score
+		
 	}
+	
 	/* Roll dice and update display */
 	private void rollAllDice() {
 		for (int i = 0; i < N_DICE; i++) {
@@ -80,7 +90,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private YahtzeeDisplay display;
 	private RandomGenerator rgen = new RandomGenerator();
 	
-	// There are only one set of dice in the game, so it makes sense to have this as a class-wide object
+	// The set of dice
 	private int[] dice = new int[N_DICE];
+	// Array representing the scorecard. Each player has a column
+	// and each row corresponds to a category on the yahtzee table
+	private int[][] scorecard;
 	
 }
