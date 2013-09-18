@@ -35,17 +35,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			
 		}
 	}
-		
+	
+	/* Print welcome message and wait for player input */
 	private void startTurn(int player) {
 		display.printMessage(playerNames[player - 1] + "\'s turn! Click \"Roll Dice\" button to roll the dice.");
 		display.waitForPlayerToClickRoll(player);
 	}
 	
+	/* Roll dice and update display */
 	private void rollDice() {
 		for (int i = 0; i < N_DICE; i++) {
 			dice[i] = rgen.nextInt(1, 6);
 		}
-		display.displayDice(int[] dice);
+		display.displayDice(dice);
 	}
 	
 /* Private instance variables */
@@ -54,7 +56,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private YahtzeeDisplay display;
 	private RandomGenerator rgen = new RandomGenerator();
 	
-	// There are only one set of dice in the game, so it makes sense to have this as a class-wide variable
+	// There are only one set of dice in the game, so it makes sense to have this as a class-wide object
 	private int[] dice;
 
 }
