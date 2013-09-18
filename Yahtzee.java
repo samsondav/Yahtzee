@@ -95,9 +95,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	/* Return sum of all values on the dice */
 	private int sumDice() {
+		int sum = 0;
 		for (int i = 0; i < N_DICE; i++) {
-			
+			sum += dice[i];
 		}
+		return sum;
 	}
 	
 	/* Roll dice and update display */
