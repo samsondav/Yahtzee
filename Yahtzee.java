@@ -47,7 +47,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void initScorecard() {
 		scorecard = new int[nPlayers][N_CATEGORIES];
 		for (int i = 0; i < nPlayers; i++) {
-			
+			for (int j = 0; j < N_CATEGORIES; j++) {
+				scorecard[i][j] = UNSCORED_VALUE;
+			}
 		}
 	}
 	
@@ -68,10 +70,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex = display.waitForPlayerToSelectCategory();
 		
-		// do not allow update if user has already recorded a score for this category
-		if (
-				updateScorecard(categoryIndex, activePlayer);
+		// only allow update if user has already recorded a score for this category
+		while(true) {
+			categoryIndex = display.waitForPlayerToSelectCategory();
+			if (scorecard[activePlayer][categoryIndex] == UNSCORED_VALUE) {
+				updateScorecard(categoryIndex);
+				break;
+			} else {
+				display.printMessage("You already picked that category. Please choose another category.");
+			}
+		}
 	}
+
 	
 	/* Monstrous method that updates the scorecard based on
 	 * current state of dice, category index and player index
