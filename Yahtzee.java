@@ -57,9 +57,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 			
 		// update all scores, apply bonuses and announce the winner
-		endGame();
-		
-		}
+		endGame();	
 	}
 	
 	/* Initialises the scorecard based on nPlayers
