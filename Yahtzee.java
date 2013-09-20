@@ -31,6 +31,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 		// Main player cycle for loop
 		for (int player = 1; player <= nPlayers; player++) {
+			// switch class-wide player index to current player
 			activePlayer = player;
 			firstTurn();
 			rollAllDice();
