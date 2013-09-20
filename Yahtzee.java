@@ -39,24 +39,23 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
-			activePlayer = player;
-			firstTurn();
-			rollAllDice();
-			nextTurn();
-			rollSelectedDice();
-			nextTurn();
-			rollSelectedDice();
-			finalTurn();
-			updateTotal();
+				activePlayer = player;
+				firstTurn();
+				rollAllDice();
+				nextTurn();
+				rollSelectedDice();
+				nextTurn();
+				rollSelectedDice();
+				finalTurn();
+				updateTotal();
+			}
 			
 			turn += 1;
 			// break if we just ended the final turn
 			if (turn > N_TURNS) {
 				break;
 			}
-			}
 		}
-			
 		// update all scores, apply bonuses and announce the winner
 		endGame();	
 	}
