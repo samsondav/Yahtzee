@@ -162,25 +162,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			// case for three of a kind and four of a kind
 			if (categoryIndex == THREE_OF_A_KIND || categoryIndex == FOUR_OF_A_KIND) {
 				score = sumDice();
-			}
-					
-			// case for full house
-			if (categoryIndex == FULL_HOUSE) {
+			} else if (categoryIndex == FULL_HOUSE) {
 				score = 25;
-			}
-			
-			// case for small straight
-			if (categoryIndex == SMALL_STRAIGHT) {
+			} else if (categoryIndex == SMALL_STRAIGHT) {
 				score = 30;
-			}
-			
-			// case for large straight
-			if (categoryIndex == LARGE_STRAIGHT) {
+			} else if (categoryIndex == LARGE_STRAIGHT) {
 				score = 40;
-			}
-			
-			// case for yahtzee
-			if (categoryIndex == YAHTZEE) {
+			} else if (categoryIndex == YAHTZEE) {
 				score = 50;
 			}
 		} else {
@@ -188,14 +176,22 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			score = 0;
 		}
 			
-	
-		// case for chance
-		if (categoryIndex == 15) {
+		if (categoryIndex == CHANCE) {
 			score = sumDice();
 		}
 		
 		// update appropriate element of scorecard
 		scorecard[activePlayer - 1][categoryIndex - 1] = score;
+	}
+	
+	/* Determine whether dice roll is valid for this category
+	 * 
+	 * @param categoryIndex
+	 * @return true if current state of dice matches supplied category. Otherwise
+	 * return false
+	 */
+	private boolean isRollValid(int categoryIndex) {
+		
 	}
 	
 	/* Return sum of all values on the dice */
