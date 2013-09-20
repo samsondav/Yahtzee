@@ -76,7 +76,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		// for this category
 		while(true) {
 			categoryIndex = display.waitForPlayerToSelectCategory();
-			if (scorecard[activePlayer - 1][categoryIndex] == UNSCORED_VALUE) {
+			if (scorecard[activePlayer - 1][categoryIndex - 1] == UNSCORED_VALUE) {
 				updateScorecard(categoryIndex);
 				break;
 			} else {
@@ -85,7 +85,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 		
 		// Update display with the appropriate score
-		display.updateScorecard(categoryIndex, activePlayer, scorecard[activePlayer - 1][categoryIndex]);
+		display.updateScorecard(categoryIndex, activePlayer, scorecard[activePlayer - 1][categoryIndex - 1]);
 	}
 
 	
@@ -179,10 +179,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	// The set of dice
 	private int[] dice = new int[N_DICE];
-	// Array representing the scorecard. Each player has a column
-	// and each row corresponds to a category on the yahtzee table
+	/*Array representing the scorecard. Each player has a column
+	 * and each row corresponds to a category on the yahtzee table
+	 * 
+	 * NOTE: categoryIndex starts at 0 in scorecard and starts at 1 as described
+	 * in YahtzeeConstants additionally, player index starts at 1, not at 0
+	 * because the YahtzeeDisplay class expects this*/
 	private int[][] scorecard;
-	// NOTE: player index starts at 1, not at 0 because the YahtzeeDisplay class expects this
 	private int activePlayer;
 	
 	// the value of a cell on the scoresheet that has not yet been scored by the player
