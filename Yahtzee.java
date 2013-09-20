@@ -144,9 +144,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			// apply upper bonus if necessary
 			if (upperScore > 63) {
 				scorecard[i][UPPER_BONUS - 1] = 35;
-			} else
+			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
-		}
+			}
 		}
 	}
 	
