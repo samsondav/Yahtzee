@@ -137,15 +137,20 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			int lowerScore = 0;
 			
 			// compute upper score
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < SIXES; j++) {
 				upperScore += scorecard[i][j];
 			}
 			
 			// apply upper bonus if necessary
-			if (upperScore > 63) {
+			if (upperScore > UPPER_BONUS_CONDITION) {
 				scorecard[i][UPPER_BONUS - 1] = 35;
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
+			}
+			
+			// compute lower score
+			for (int j = 8; j < LOWER_SCORE; j++) {
+				lowerScore += scorecard[i][j];
 			}
 		}
 	}
@@ -278,5 +283,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private static final int UNSCORED_VALUE = -1;
 	// the number of turns each player gets before the game is over
 	private static final int N_TURNS = 13;
+	
+	// how many points are needed in upper category for bonus to apply
+	private static final int UPPER_BONUS_CONDITION = 63;
 	
 }
