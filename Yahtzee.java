@@ -49,7 +49,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			
 			// break if all scores have been recorded
-			if isGameOver() {
+			if (isGameOver()) {
 				break;
 			}
 		}
