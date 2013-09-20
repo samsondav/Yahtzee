@@ -130,8 +130,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	/* Monstrous method that updates the scorecard based on
 	 * current state of dice, category index and player index
 	 * 
-	 * WARNING: This method does not check if a score already exists in
+	 * WARNING: This method is 'dumb' and does not check if a score already exists in
 	 * a certain category and will overwrite any existing values
+	 * 
+	 * Additionally it does NOT check to see if the current dice configuration is valid
+	 * for this chosen category
 	 * 
 	 * @param categoryIndex - the player's chosen category
 	 */
