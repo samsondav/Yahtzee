@@ -126,12 +126,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.updateScorecard(TOTAL, activePlayer, total);
 	}
 	
-	/* return true if players have filled all categories i.e. game is over */
-	private boolean isGameOver() {
-		// TODO: fix this so it actually detects when the game is over
-		return false;
-	}
-	
 	/* update all scores, apply bonuses and announce the winner
 	 * 
 	 */
