@@ -130,7 +130,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * 
 	 */
 	private void endGame() {
-		sumTotals();
+		int biggestTotal = 0;
+		int winningPlayer = 1;
 		
 		// sum mini-totals for each player
 		for (int i = 0; i < nPlayers; i++) {
@@ -158,11 +159,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			scorecard[i][LOWER_SCORE - 1] = lowerScore;
 			display.updateScorecard(LOWER_SCORE, i + 1, lowerScore);
+			
+			// update winningPlayer to player index with highest total
+			// FIXME: This is sloppy and doesn't handle the corner case of a draw or if players
+			// score 0.
+			if (scorecard[i][TOTAL - 1] >= biggestTotal) {
+				winningPlayer = i + 1;
+			}
 		}
 		
 		// print gratz message for winner
-		for (int)
-		display.printMessage("Congralu)
+		display.printMessage("Congralutions, " + playerNames[winningPlayer - 1] + ", you\'re the winner with a total score of " + scorecard[winningPlayer - 1][TOTAL - 1] + "!");
 	}
 	
 	/* Monstrous method that updates the scorecard based on
