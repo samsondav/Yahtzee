@@ -72,7 +72,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.printMessage("Select a category for this roll");
 		int categoryIndex;
 		
-		// only allow update if user has already recorded a score for this category
+		// only allow writing to scorecard if user has NOT already recorded a score
+		// for this category
 		while(true) {
 			categoryIndex = display.waitForPlayerToSelectCategory();
 			if (scorecard[activePlayer - 1][categoryIndex] == UNSCORED_VALUE) {
@@ -82,11 +83,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				display.printMessage("You already picked that category. Please choose another category.");
 			}
 		}
+		
+		// Update display with the appropriate score
+		display.updateScorecard(categoryIndex, activePlayer, scorecard[activePlayer - 1][categoryIndex]);
 	}
 
 	
 	/* Monstrous method that updates the scorecard based on
 	 * current state of dice, category index and player index
+	 * 
+	 * WARNING: This method does not check if a score already exists in
+	 * a certain category and will overwrite any existing values
 	 * 
 	 * @param categoryIndex - the player's chosen category
 	 */
@@ -175,7 +182,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	// Array representing the scorecard. Each player has a column
 	// and each row corresponds to a category on the yahtzee table
 	private int[][] scorecard;
-	// Only one player can be active at a time, so this should be a classwide variable
+	// NOTE: player index starts at 1, not at 0 because the YahtzeeDisplay class expects this
 	private int activePlayer;
 	
 	// the value of a cell on the scoresheet that has not yet been scored by the player
