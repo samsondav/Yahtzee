@@ -35,7 +35,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * at a time. This is switched using activePlayer. Unless otherwise stated,
 		 * all methods only apply to the currently active player.
 		 */
+		int turn = 0;
+		
 		while (true) {
+			// break if we just ended the final turn
+			if (turn > N_TURNS) {
+				break;
+			}
+			
 			for (int player = 1; player <= nPlayers; player++) {
 			activePlayer = player;
 			firstTurn();
@@ -47,11 +54,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			finalTurn();
 			updateTotal();
 			}
-			
-			// break if all scores have been recorded
-			if (isGameOver()) {
-				break;
-			}
+		}
 			
 		// update all scores, apply bonuses and announce the winner
 		endGame();
@@ -264,5 +267,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	// the value of a cell on the scoresheet that has not yet been scored by the player
 	private static final int UNSCORED_VALUE = -1;
+	// the number of turns each player gets before the game is over
+	private static final int N_TURNS = 13;
 	
 }
