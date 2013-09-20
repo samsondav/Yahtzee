@@ -38,11 +38,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int turn = 0;
 		
 		while (true) {
-			// break if we just ended the final turn
-			if (turn > N_TURNS) {
-				break;
-			}
-			
 			for (int player = 1; player <= nPlayers; player++) {
 			activePlayer = player;
 			firstTurn();
@@ -53,6 +48,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			rollSelectedDice();
 			finalTurn();
 			updateTotal();
+			
+			turn += 1;
+			// break if we just ended the final turn
+			if (turn > N_TURNS) {
+				break;
+			}
 			}
 		}
 			
