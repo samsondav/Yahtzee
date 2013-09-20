@@ -133,7 +133,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		// sum mini-totals for each player
 		for (int i = 0; i < nPlayers; i++) {
 			int upperScore = 0;
-			int upperBonus = 0;
 			int lowerScore = 0;
 			
 			// compute upper score
