@@ -108,10 +108,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void updateTotal() {
 		int total = 0;
 		
-		// sum every scored value in the column of the currently active player
-		for (int i = 0; i < N_CATEGORIES; i++) {
-			if (scorecard[activePlayer - 1][i] != UNSCORED_VALUE) {
-				total+= scorecard[activePlayer - 1][i];
+		// sum every SCORED value in the column of the currently active player
+		for (int i = 1; i <= N_CATEGORIES; i++) {
+			if (i == UPPER_SCORE || i == UPPER_BONUS || i == LOWER_SCORE || i == TOTAL) {
+				//do not count these rows
+			} else if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
+				total+= scorecard[activePlayer - 1][i - 1];
 			}
 		}
 		// write total to scorecard[][] and update display to reflect the new value
