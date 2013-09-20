@@ -146,11 +146,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			
 			// apply upper bonus if necessary
 			if (upperScore > UPPER_BONUS_CONDITION) {
-				scorecard[i][UPPER_BONUS - 1] = 35;
+				scorecard[i][UPPER_BONUS - 1] = UPPER_BONUS_AMOUNT;
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
 			}
-			display.updateScorecard(UPPER_BONUS, i + 1, upperScore);
+			display.updateScorecard(UPPER_BONUS, i + 1, UPPER_BONUS_AMOUNT);
 			
 			// compute lower score
 			for (int j = 8; j < CHANCE; j++) {
