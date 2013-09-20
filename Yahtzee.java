@@ -149,7 +149,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			
 			// compute lower score
-			for (int j = 8; j < LOWER_SCORE; j++) {
+			for (int j = 8; j < CHANCE; j++) {
 				lowerScore += scorecard[i][j];
 			}
 		}
