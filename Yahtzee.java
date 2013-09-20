@@ -57,7 +57,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 		}
 		// update all scores, apply bonuses and announce the winner
-		endGame();	
+		endGame();
 	}
 	
 	/* Initialises the scorecard based on nPlayers
@@ -159,6 +159,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			scorecard[i][LOWER_SCORE - 1] = lowerScore;
 			display.updateScorecard(LOWER_SCORE, i + 1, lowerScore);
 		}
+		
+		// print gratz message for winner
+		for (int)
+		display.printMessage("Congralu)
 	}
 	
 	/* Monstrous method that updates the scorecard based on
