@@ -285,7 +285,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	// the number of turns each player gets before the game is over
 	private static final int N_TURNS = 13;
 	
-	// how many points are needed in upper category for bonus to apply
+	// points in upper category must be greater than this for bonus to apply
 	private static final int UPPER_BONUS_CONDITION = 63;
 	
 }
