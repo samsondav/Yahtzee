@@ -184,14 +184,27 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		scorecard[activePlayer - 1][categoryIndex - 1] = score;
 	}
 	
-	/* Determine whether dice roll is valid for this category
+	/* Determine whether dice roll is valid for the given category.
+	 * 
+	 * NOTE: This method only implements any interesting logic for the following categories:
+	 * THREE_OF_A_KIND, FOUR_OF_A_KIND, FULL_HOUSE, SMALL_STRAIGHT, LARGE_STRAIGHT, YAHTZEE
+	 * 
+	 * For all other categories, any dice configuration is valid so we just return true
 	 * 
 	 * @param categoryIndex
 	 * @return true if current state of dice matches supplied category. Otherwise
 	 * return false
 	 */
 	private boolean isRollValid(int categoryIndex) {
-		
+		switch (categoryIndex) {
+		case THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case FOUR_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case FULL_HOUSE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case SMALL_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case LARGE_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case YAHTZEE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		default: return true;
+		}
 	}
 	
 	/* Return sum of all values on the dice */
