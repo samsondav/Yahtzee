@@ -29,9 +29,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* You fill this in */
 
-		// Main player cycle for loop
+		/* MAIN PLAY LOOP
+		 * 
+		 * Note: This code uses a model that there can only be one active player
+		 * at a time. This is switched using activePlayer. Unless otherwise stated,
+		 * all methods only apply to the currently active player.
+		 */
 		for (int player = 1; player <= nPlayers; player++) {
-			// switch class-wide player index to current player
 			activePlayer = player;
 			firstTurn();
 			rollAllDice();
@@ -40,6 +44,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			nextTurn();
 			rollSelectedDice();
 			finalTurn();
+			updateTotal();
 		}
 	}
 	
@@ -77,7 +82,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		while(true) {
 			categoryIndex = display.waitForPlayerToSelectCategory();
 			if (scorecard[activePlayer - 1][categoryIndex - 1] == UNSCORED_VALUE) {
-				updateScorecard(categoryIndex);
+				writeScoreToScorecard(categoryIndex);
 				break;
 			} else {
 				display.printMessage("You already picked that category. Please choose another category.");
@@ -88,6 +93,24 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.updateScorecard(categoryIndex, activePlayer, scorecard[activePlayer - 1][categoryIndex - 1]);
 	}
 
+	/* NOTE: This method must be called at the end of every turn, and updates
+	 * total for the active player ONLY.
+	 * 
+	 * It updates scorecard so that the total reflects the sum of the current scores
+	 */
+	private void updateTotal() {
+		int total = 0;
+		
+		// sum every scored value in the column of the currently active player
+		for (int i = 0; i < N_CATEGORIES; i++) {
+			if (scorecard[activePlayer - 1][i] != UNSCORED_VALUE) {
+				total+= scorecard[activePlayer - 1][i];
+			}
+		}
+		// write total to scorecard[][] and update display to reflect the new value
+		scorecard[activePlayer - 1][TOTAL] = total;
+		display.updateScorecard(TOTAL, activePlayer, total);
+	}
 	
 	/* Monstrous method that updates the scorecard based on
 	 * current state of dice, category index and player index
@@ -97,7 +120,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * 
 	 * @param categoryIndex - the player's chosen category
 	 */
-	private void updateScorecard(int categoryIndex) {
+	private void writeScoreToScorecard(int categoryIndex) {
 		int score = 0;
 		
 		// case for Ones, Twos.... Sixes
@@ -141,7 +164,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		
 		// update appropriate element of scorecard
 		scorecard[activePlayer - 1][categoryIndex - 1] = score;
-
 	}
 	
 	/* Return sum of all values on the dice */
