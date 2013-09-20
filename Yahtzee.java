@@ -157,7 +157,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				lowerScore += scorecard[i][j];
 			}
 			scorecard[i][LOWER_SCORE - 1] = lowerScore;
-			display.updateScorecard(LOWER_SCORE, i + 1, total);
+			display.updateScorecard(LOWER_SCORE, i + 1, lowerScore);
 		}
 	}
 	
@@ -292,6 +292,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	// points in upper category must be greater than this for bonus to apply
 	private static final int UPPER_BONUS_CONDITION = 63;
-	private static final in UPPER_BONUS_AMOUNT = 35;
+	private static final int UPPER_BONUS_AMOUNT = 35;
 	
 }
