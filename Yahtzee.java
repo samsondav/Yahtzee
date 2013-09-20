@@ -75,7 +75,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		// only allow update if user has already recorded a score for this category
 		while(true) {
 			categoryIndex = display.waitForPlayerToSelectCategory();
-			if (scorecard[activePlayer][categoryIndex] == UNSCORED_VALUE) {
+			if (scorecard[activePlayer - 1][categoryIndex] == UNSCORED_VALUE) {
 				updateScorecard(categoryIndex);
 				break;
 			} else {
