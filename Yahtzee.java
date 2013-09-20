@@ -150,31 +150,41 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 		}
 
-		// case for three of a kind and four of a kind
-		if (categoryIndex == 9 || categoryIndex == 10) {
-			score = sumDice();
-		}
-				
-		// case for full house
-		if (categoryIndex == 11) {
-			score = 25;
-		}
-		
-		// case for small straight
-		if (categoryIndex == 12) {
-			score = 30;
-		}
-		
-		// case for large straight
-		if (categoryIndex == 13) {
-			score = 40;
-		}
-		
-		// case for yahtzee
-		if (categoryIndex == 14) {
-			score = 50;
-		}
-		
+		/* NOTE: For the cases below, some additional logic must be used to determine
+		 * if the current dice configuration is actually valid for the chosen category
+		 * 
+		 * This logic is engaged by calling the isRollValid() method
+		 * 
+		 * If the current roll is invalid for the chosen category, the score will be
+		 * recorded as a 0
+		 */
+		if (isRollValid(categoryIndex)) {
+			// case for three of a kind and four of a kind
+			if (categoryIndex == 9 || categoryIndex == 10) {
+				score = sumDice();
+			}
+					
+			// case for full house
+			if (categoryIndex == 11) {
+				score = 25;
+			}
+			
+			// case for small straight
+			if (categoryIndex == 12) {
+				score = 30;
+			}
+			
+			// case for large straight
+			if (categoryIndex == 13) {
+				score = 40;
+			}
+			
+			// case for yahtzee
+			if (categoryIndex == 14) {
+				score = 50;
+			}
+	}
+	
 		// case for chance
 		if (categoryIndex == 15) {
 			score = sumDice();
