@@ -52,6 +52,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			if (isGameOver()) {
 				break;
 			}
+			
+		// update all scores, apply bonuses and announce the winner
+		endGame();
+		
 		}
 	}
 	
@@ -125,6 +129,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private boolean isGameOver() {
 		// TODO: fix this so it actually detects when the game is over
 		return false;
+	}
+	
+	/* update all scores, apply bonuses and announce the winner
+	 * 
+	 */
+	private void endGame() {
+		//TODO: write this method
 	}
 	
 	/* Monstrous method that updates the scorecard based on
