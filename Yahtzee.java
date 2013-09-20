@@ -130,7 +130,24 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * 
 	 */
 	private void endGame() {
-		//TODO: write this method
+		// sum mini-totals for each player
+		for (int i = 0; i < nPlayers; i++) {
+			int upperScore = 0;
+			int upperBonus = 0;
+			int lowerScore = 0;
+			
+			// compute upper score
+			for (int j = 0; j < 6; j++) {
+				upperScore += scorecard[i][j];
+			}
+			
+			// apply upper bonus if necessary
+			if (upperScore > 63) {
+				scorecard[i][UPPER_BONUS - 1] = 35;
+			} else
+				scorecard[i][UPPER_BONUS - 1] = 0;
+		}
+		}
 	}
 	
 	/* Monstrous method that updates the scorecard based on
