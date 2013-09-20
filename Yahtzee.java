@@ -142,7 +142,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int score = 0;
 		
 		// case for Ones, Twos.... Sixes
-		if (categoryIndex <= 6) {
+		if (categoryIndex <= SIXES) {
 			for (int i = 0; i < N_DICE; i++) {
 				if (dice[i] == categoryIndex) {
 					score += categoryIndex;
@@ -160,32 +160,32 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 */
 		if (isRollValid(categoryIndex)) {
 			// case for three of a kind and four of a kind
-			if (categoryIndex == 9 || categoryIndex == 10) {
+			if (categoryIndex == THREE_OF_A_KIND || categoryIndex == FOUR_OF_A_KIND) {
 				score = sumDice();
 			}
 					
 			// case for full house
-			if (categoryIndex == 11) {
+			if (categoryIndex == FULL_HOUSE) {
 				score = 25;
 			}
 			
 			// case for small straight
-			if (categoryIndex == 12) {
+			if (categoryIndex == SMALL_STRAIGHT) {
 				score = 30;
 			}
 			
 			// case for large straight
-			if (categoryIndex == 13) {
+			if (categoryIndex == LARGE_STRAIGHT) {
 				score = 40;
 			}
 			
 			// case for yahtzee
-			if (categoryIndex == 14) {
+			if (categoryIndex == YAHTZEE) {
 				score = 50;
 			}
 		} else {
 			// dice configuration not valid for chosen category option, score 0
-			score == 0;
+			score = 0;
 		}
 			
 	
