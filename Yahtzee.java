@@ -70,7 +70,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	/* Print message, wait for user to select category and update scorecard */
 	private void finalTurn() {
 		display.printMessage("Select a category for this roll");
-		int categoryIndex = display.waitForPlayerToSelectCategory();
+		int categoryIndex;
 		
 		// only allow update if user has already recorded a score for this category
 		while(true) {
