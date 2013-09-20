@@ -130,6 +130,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * 
 	 */
 	private void endGame() {
+		sumTotals();
+		
 		// sum mini-totals for each player
 		for (int i = 0; i < nPlayers; i++) {
 			int upperScore = 0;
@@ -140,6 +142,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				upperScore += scorecard[i][j];
 			}
 			scorecard[i][UPPER_SCORE - 1] = upperScore;
+			display.updateScorecard(UPPER_SCORE, i + 1, upperScore);
 			
 			// apply upper bonus if necessary
 			if (upperScore > UPPER_BONUS_CONDITION) {
@@ -147,12 +150,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
 			}
+			display.updateScorecard(UPPER_BONUS, i + 1, upperScore);
 			
 			// compute lower score
 			for (int j = 8; j < CHANCE; j++) {
 				lowerScore += scorecard[i][j];
 			}
 			scorecard[i][LOWER_SCORE - 1] = lowerScore;
+			display.updateScorecard(LOWER_SCORE, i + 1, total);
 		}
 	}
 	
@@ -287,5 +292,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	// points in upper category must be greater than this for bonus to apply
 	private static final int UPPER_BONUS_CONDITION = 63;
+	private static final in UPPER_BONUS_AMOUNT = 35;
 	
 }
