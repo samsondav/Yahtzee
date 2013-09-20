@@ -183,7 +183,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			if (categoryIndex == 14) {
 				score = 50;
 			}
-	}
+		} else {
+			// dice configuration not valid for chosen category option, score 0
+			score == 0;
+		}
+			
 	
 		// case for chance
 		if (categoryIndex == 15) {
