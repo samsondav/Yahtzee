@@ -35,7 +35,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * at a time. This is switched using activePlayer. Unless otherwise stated,
 		 * all methods only apply to the currently active player.
 		 */
-		for (int player = 1; player <= nPlayers; player++) {
+		while (true) {
+			for (int player = 1; player <= nPlayers; player++) {
 			activePlayer = player;
 			firstTurn();
 			rollAllDice();
@@ -45,6 +46,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			rollSelectedDice();
 			finalTurn();
 			updateTotal();
+			}
+			
+			// break if all scores have been recorded
+			if gameOver() {
+				break;
+			}
 		}
 	}
 	
