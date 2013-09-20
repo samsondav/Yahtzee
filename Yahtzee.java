@@ -108,7 +108,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 		}
 		// write total to scorecard[][] and update display to reflect the new value
-		scorecard[activePlayer - 1][TOTAL] = total;
+		scorecard[activePlayer - 1][TOTAL - 1] = total;
 		display.updateScorecard(TOTAL, activePlayer, total);
 	}
 	
