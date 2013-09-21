@@ -4,6 +4,8 @@
  * This program will eventually play the Yahtzee game.
  */
 
+import java.util.Arrays;
+
 import acm.io.*;
 import acm.program.*;
 import acm.util.*;
@@ -243,7 +245,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * TODO: replace YahtzeeMagicStub with your own code
 	 */
 	private boolean isRollValid(int categoryIndex) {
-		if (isThreeOfAKind()) return true;
+		// Clever hack using Stringutils
+		String diceString = Arrays.toString(dice);
 		switch (categoryIndex) {
 		case THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case FOUR_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
@@ -256,9 +259,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	/* Returns true if current state of dice is a valid three of a kind */
-	private boolean isThreeOfAKind() {
-		
-	}
+//	private boolean isThreeOfAKind() {
+//		
+//	}
 	
 	/* Return sum of all values on the dice */
 	private int sumDice() {
