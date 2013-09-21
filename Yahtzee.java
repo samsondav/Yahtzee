@@ -279,7 +279,23 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	/* Returns true if dice values consist of a pair and a three of a kind */
 	private boolean isFullHouse() {
+		// create sorted copy of dice values
+		int[] diceSorted = Arrays.copyOf(dice, dice.length);
+		Arrays.sort(diceSorted);
 		
+		// dice is a valid full house if diceSorted consists of XXYYY or XXXYY
+		
+		//check case XXYYY
+		if (diceSorted[0] == diceSorted[1] && diceSorted[2] == diceSorted[3] && diceSorted[3] == diceSorted[4]) {
+			return true;
+		
+		// check case XXXYY
+		if (diceSorted[0] == diceSorted[1] && diceSorted[1] == diceSorted[2] && diceSorted[3] == diceSorted[4]) {
+			return true;
+		}
+		
+		// by default return false
+		return false;
 	}
 	
 	/* Return true if current state of dice is a straight
