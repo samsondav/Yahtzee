@@ -48,7 +48,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				nextTurn();
 				rollSelectedDice();
 				finalTurn();
-				updateTotals();
+				updateTotals(activePlayer);
 			}
 			
 			turn += 1;
