@@ -277,6 +277,26 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		return false;
 	}
 	
+	/* Return true if current state of dice is a straight
+	 * 
+	 * @param X - length of the straight i.e. 4 for small straight,
+	 * 5 for large straight
+	 */
+	private boolean isStraight(int X) {
+		// create sorted copy of dice values
+		int[] diceSorted = Arrays.copyOf(dice, dice.length);
+		Arrays.sort(diceSorted);
+		
+		int straight = 0;
+		for (int i = 0; i < N_DICE - 1; i++) {
+			if (dice[i] == dice[i + 1]) {
+				straight += 1;
+			} else {
+				straight = 0;
+			}
+		}
+	}
+	
 	/* Return sum of all values on the dice */
 	private int sumDice() {
 		int sum = 0;
