@@ -154,25 +154,25 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 */
 	private void endGame() {
 		int biggestTotal = 0;
-		int winningPlayer = 1;
+		int winningPlayer = 0;
 		
 		// sum mini-totals for each player
-		for (int i = 0; i < nPlayers; i++) {			
+		for (int i = 1; i <= nPlayers; i++) {			
 			// apply upper bonus if necessary
-			if (scorecard[i][UPPER_SCORE - 1] > UPPER_BONUS_CONDITION) {
-				scorecard[i][UPPER_BONUS - 1] = UPPER_BONUS_AMOUNT;
+			if (scorecard[i - 1][UPPER_SCORE - 1] > UPPER_BONUS_CONDITION) {
+				scorecard[i - 1][UPPER_BONUS - 1] = UPPER_BONUS_AMOUNT;
 			} else {
-				scorecard[i][UPPER_BONUS - 1] = 0;
+				scorecard[i - 1][UPPER_BONUS - 1] = 0;
 			}
 			
 			// add upper bonus to TOTAL
-			updateTotals(i + 1);
+			updateTotals(i);
 			
 			// update winningPlayer to player index with highest total
 			// FIXME: This is sloppy and doesn't handle the corner case of a draw or if players
 			// score 0.
-			if (scorecard[i][TOTAL - 1] >= biggestTotal) {
-				winningPlayer = i + 1;
+			if (scorecard[i - 1][TOTAL - 1] >= biggestTotal) {
+				winningPlayer = i;
 			}
 		}
 		
