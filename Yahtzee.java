@@ -116,8 +116,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		
 		// sum every SCORED value in the column of the currently active player
 		for (int i = 1; i <= N_CATEGORIES; i++) {
-			if (i == TOTAL) {
-				//DO NOTHING - do not count the total row itself
+			if (i == TOTAL || i == UPPER_SCORE || i == LOWER_SCORE) {
+				// PASS - do not count score categories
 			} else if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
 				total+= scorecard[activePlayer - 1][i - 1];
 			}
@@ -152,7 +152,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
 			}
-			display.updateScorecard(UPPER_BONUS, i + 1, UPPER_BONUS_AMOUNT);
+			
+			// add upper bonus to TOTAL
+			updateTotal();
 			
 			// compute lower score
 			for (int j = 8; j < CHANCE; j++) {
