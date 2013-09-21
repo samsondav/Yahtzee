@@ -48,7 +48,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				nextTurn();
 				rollSelectedDice();
 				finalTurn();
-				updateTotal();
+				updateTotals();
 			}
 			
 			turn += 1;
@@ -106,20 +106,42 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.updateScorecard(categoryIndex, activePlayer, scorecard[activePlayer - 1][categoryIndex - 1]);
 	}
 
-	/* NOTE: This method must be called at the end of every turn, and updates
-	 * total for the active player ONLY.
+	/* NOTE: This method should be called at the end of every turn, and updates
+	 * totals for the active player ONLY.
 	 * 
-	 * It updates scorecard so that the total reflects the sum of the current scores
+	 * It updates scorecard so that upper, lower and main totals reflect the sum of the current scores
 	 */
-	private void updateTotal() {
+	private void updateTotals() {
 		int total = 0;
+		int upperScore = 0;
+		int lowerScore = 0;
 		
-		// sum every SCORED value in the column of the currently active player
+		// calculate UPPER_SCORE
+		for (int i = ONES; i <= SIXES; i++) {
+			if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
+				upperScore += scorecard[activePlayer - 1][i - 1];
+			}
+		}
+		// write UPPER_SCORE to scorecard[][] and update display to reflect the new value
+		scorecard[activePlayer - 1][UPPER_SCORE - 1] = upperScore;
+		display.updateScorecard(UPPER_SCORE, activePlayer, upperScore);
+		
+		// calculate LOWER_SCORE
+		for (int i = THREE_OF_A_KIND; i <= CHANCE; i++) {
+			if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
+				lowerScore += scorecard[activePlayer - 1][i - 1];
+			}
+		}
+		// write LOWER_SCORE to scorecard[][] and update display to reflect the new value
+		scorecard[activePlayer - 1][LOWER_SCORE - 1] = lowerScore;
+		display.updateScorecard(LOWER_SCORE, activePlayer, lowerScore);
+		
+		// calculate TOTAL
 		for (int i = 1; i <= N_CATEGORIES; i++) {
 			if (i == TOTAL || i == UPPER_SCORE || i == LOWER_SCORE) {
 				// PASS - do not count score categories
 			} else if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
-				total+= scorecard[activePlayer - 1][i - 1];
+				total += scorecard[activePlayer - 1][i - 1];
 			}
 		}
 		// write total to scorecard[][] and update display to reflect the new value
