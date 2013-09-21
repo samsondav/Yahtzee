@@ -249,7 +249,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		switch (categoryIndex) {
 		case THREE_OF_A_KIND: return containsXOfAKind(3);
 		case FOUR_OF_A_KIND: return containsXOfAKind(4);
-		case FULL_HOUSE: 
+		case FULL_HOUSE: return isFullHouse();
 		case SMALL_STRAIGHT: return containsStraight(4);
 		case LARGE_STRAIGHT: return containsStraight(5);
 		case YAHTZEE: return containsXOfAKind(5);
@@ -275,6 +275,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			counter = 0;
 		}
 		return false;
+	}
+	
+	private boolean isFullHouse() {
+		
 	}
 	
 	/* Return true if current state of dice is a straight
