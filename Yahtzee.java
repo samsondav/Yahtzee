@@ -277,6 +277,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		return false;
 	}
 	
+	/* Returns true if dice values consist of a pair and a three of a kind */
 	private boolean isFullHouse() {
 		
 	}
