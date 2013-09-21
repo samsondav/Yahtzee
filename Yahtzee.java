@@ -295,6 +295,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				straight = 0;
 			}
 		}
+		
+		// return true if we found a matching straight
 		if (straight >= X) {
 			return true;
 		} else {
