@@ -171,7 +171,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			// update winningPlayer to player index with highest total
 			// FIXME: This is sloppy and doesn't handle the corner case of a draw or if players
 			// score 0.
+			int totalScore = scorecard[i - 1][TOTAL - 1];
 			if (scorecard[i - 1][TOTAL - 1] >= biggestTotal) {
+				biggestTotal = totalScore;
 				winningPlayer = i;
 			}
 		}
