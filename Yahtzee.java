@@ -176,7 +176,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			
 			// add upper bonus to TOTAL
-			updateTotal();
+			updateTotals();
 			
 			// compute lower score
 			for (int j = 8; j < CHANCE; j++) {
