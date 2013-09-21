@@ -243,19 +243,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * TODO: replace YahtzeeMagicStub with your own code
 	 */
 	private boolean isRollValid(int categoryIndex) {
-		/* For a three of a kind to be valid:
-		 * At least three of the dice values must be the same
-		 * i.e. there must be at least three of:
-		 * 1,2,3,4,5 or 6
-		 */
-		if (categoryIndex == THREE_OF_A_KIND) {
-			int count[] = new int[5];
-			for (int i = 0; i > N_DICE; i++) {
-				for (int j = 0; j < 6; j++){
-					
-				}
-			}
-		}
+		if (isThreeOfAKind()) return true;
 		switch (categoryIndex) {
 		case THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case FOUR_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
@@ -265,6 +253,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		case YAHTZEE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		default: return true;
 		}
+	}
+	
+	/* Returns true if current state of dice is a valid three of a kind */
+	private boolean isThreeOfAKind() {
+		
 	}
 	
 	/* Return sum of all values on the dice */
