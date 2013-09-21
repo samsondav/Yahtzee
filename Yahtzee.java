@@ -107,46 +107,46 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	/* NOTE: This method should be called at the end of every turn, and updates
-	 * totals for the active player ONLY.
+	 * totals for the specified player ONLY.
 	 * 
 	 * It updates scorecard so that upper, lower and main totals reflect the sum of the current scores
 	 */
-	private void updateTotals() {
+	private void updateTotals(int player) {
 		int total = 0;
 		int upperScore = 0;
 		int lowerScore = 0;
 		
 		// calculate UPPER_SCORE
 		for (int i = ONES; i <= SIXES; i++) {
-			if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
-				upperScore += scorecard[activePlayer - 1][i - 1];
+			if (scorecard[player - 1][i - 1] != UNSCORED_VALUE) {
+				upperScore += scorecard[player - 1][i - 1];
 			}
 		}
 		// write UPPER_SCORE to scorecard[][] and update display to reflect the new value
-		scorecard[activePlayer - 1][UPPER_SCORE - 1] = upperScore;
-		display.updateScorecard(UPPER_SCORE, activePlayer, upperScore);
+		scorecard[player - 1][UPPER_SCORE - 1] = upperScore;
+		display.updateScorecard(UPPER_SCORE, player, upperScore);
 		
 		// calculate LOWER_SCORE
 		for (int i = THREE_OF_A_KIND; i <= CHANCE; i++) {
-			if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
-				lowerScore += scorecard[activePlayer - 1][i - 1];
+			if (scorecard[player - 1][i - 1] != UNSCORED_VALUE) {
+				lowerScore += scorecard[player - 1][i - 1];
 			}
 		}
 		// write LOWER_SCORE to scorecard[][] and update display to reflect the new value
-		scorecard[activePlayer - 1][LOWER_SCORE - 1] = lowerScore;
-		display.updateScorecard(LOWER_SCORE, activePlayer, lowerScore);
+		scorecard[player - 1][LOWER_SCORE - 1] = lowerScore;
+		display.updateScorecard(LOWER_SCORE, player, lowerScore);
 		
 		// calculate TOTAL
 		for (int i = 1; i <= N_CATEGORIES; i++) {
 			if (i == TOTAL || i == UPPER_SCORE || i == LOWER_SCORE) {
 				// PASS - do not count score categories
-			} else if (scorecard[activePlayer - 1][i - 1] != UNSCORED_VALUE) {
-				total += scorecard[activePlayer - 1][i - 1];
+			} else if (scorecard[player - 1][i - 1] != UNSCORED_VALUE) {
+				total += scorecard[player - 1][i - 1];
 			}
 		}
 		// write total to scorecard[][] and update display to reflect the new value
-		scorecard[activePlayer - 1][TOTAL - 1] = total;
-		display.updateScorecard(TOTAL, activePlayer, total);
+		scorecard[player - 1][TOTAL - 1] = total;
+		display.updateScorecard(TOTAL, player, total);
 	}
 	
 	/* update all scores, apply bonuses and announce the winner
