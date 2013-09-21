@@ -240,8 +240,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * @param categoryIndex
 	 * @return true if current state of dice matches supplied category. Otherwise
 	 * return false
-	 * 
-	 * TODO: replace YahtzeeMagicStub with your own code
 	 */
 	private boolean isRollValid(int categoryIndex) {
 		switch (categoryIndex) {
