@@ -244,25 +244,38 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * TODO: replace YahtzeeMagicStub with your own code
 	 */
 	private boolean isRollValid(int categoryIndex) {
-		if (categoryIndex == THREE_OF_A_KIND) {
-			return isThreeOfAKind();
-		}
+		int[]count = new int[5];
 		
 		switch (categoryIndex) {
-		case THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
-		case FOUR_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
-		case FULL_HOUSE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case THREE_OF_A_KIND: return isXOfAKind(3);
+		case FOUR_OF_A_KIND: return isXOfAKind(4);
+		case FULL_HOUSE: return isXOfAKind(5);
 		case SMALL_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case LARGE_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case YAHTZEE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		default: return true;
 		}
 	}
-	
-	/* Returns true if current state of dice is a valid three of a kind */
-//	private boolean isThreeOfAKind() {
-//		
-//	}
+
+	/* Returns true if current state of dice is a valid X of a kind 
+	 * 
+	 * @param X - number of dice that must match i.e. 2 for a pair,
+	 * 3 for three of a kind etc
+	 * 
+	 * @return true if dice combo contains at least X of any kind
+	 * @return false if dice combo does NOT
+	 */
+	private boolean isXOfAKind(int X) {
+		int counter = 0;
+		for (int i = 0; i < N_DICE; i++) {
+			for (int j = 0; j < i; j++) {
+				if (dice[i] == dice[j]) counter++;
+			}
+			if (counter >= X) return true;
+			counter = 0;
+		}
+		return false;
+	}
 	
 	/* Return sum of all values on the dice */
 	private int sumDice() {
