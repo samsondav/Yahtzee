@@ -244,8 +244,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * TODO: replace YahtzeeMagicStub with your own code
 	 */
 	private boolean isRollValid(int categoryIndex) {
-		int[]count = new int[5];
-		
 		switch (categoryIndex) {
 		case THREE_OF_A_KIND: return containsXOfAKind(3);
 		case FOUR_OF_A_KIND: return containsXOfAKind(4);
