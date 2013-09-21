@@ -309,7 +309,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int straight = 0;
 		for (int i = 0; i < N_DICE - 1; i++) {
 			if (diceSorted[i] == diceSorted[i + 1]) {
-				// PASS - ignore duplicate dice values
+				// PASS - skip over duplicate dice values
 			} else if (diceSorted[i] + 1 == diceSorted[i + 1]) {
 				straight += 1;
 			} else {
