@@ -157,19 +157,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int winningPlayer = 1;
 		
 		// sum mini-totals for each player
-		for (int i = 0; i < nPlayers; i++) {
-			int upperScore = 0;
-			int lowerScore = 0;
-			
-			// compute upper score
-			for (int j = 0; j < SIXES; j++) {
-				upperScore += scorecard[i][j];
-			}
-			scorecard[i][UPPER_SCORE - 1] = upperScore;
-			display.updateScorecard(UPPER_SCORE, i + 1, upperScore);
-			
+		for (int i = 0; i < nPlayers; i++) {			
 			// apply upper bonus if necessary
-			if (upperScore > UPPER_BONUS_CONDITION) {
+			if (scorecard[i]UPPER_SCORE - 1] > UPPER_BONUS_CONDITION) {
 				scorecard[i][UPPER_BONUS - 1] = UPPER_BONUS_AMOUNT;
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
@@ -177,13 +167,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			
 			// add upper bonus to TOTAL
 			updateTotals();
-			
-			// compute lower score
-			for (int j = 8; j < CHANCE; j++) {
-				lowerScore += scorecard[i][j];
-			}
-			scorecard[i][LOWER_SCORE - 1] = lowerScore;
-			display.updateScorecard(LOWER_SCORE, i + 1, lowerScore);
 			
 			// update winningPlayer to player index with highest total
 			// FIXME: This is sloppy and doesn't handle the corner case of a draw or if players
