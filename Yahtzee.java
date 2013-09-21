@@ -271,7 +271,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			for (int j = 0; j < i; j++) {
 				if (dice[i] == dice[j]) counter++;
 			}
-			if (counter >= X) return true;
+			if (counter >= X - 1) return true;
 			counter = 0;
 		}
 		return false;
