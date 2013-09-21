@@ -159,7 +159,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		// sum mini-totals for each player
 		for (int i = 0; i < nPlayers; i++) {			
 			// apply upper bonus if necessary
-			if (scorecard[i]UPPER_SCORE - 1] > UPPER_BONUS_CONDITION) {
+			if (scorecard[i][UPPER_SCORE - 1] > UPPER_BONUS_CONDITION) {
 				scorecard[i][UPPER_BONUS - 1] = UPPER_BONUS_AMOUNT;
 			} else {
 				scorecard[i][UPPER_BONUS - 1] = 0;
