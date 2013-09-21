@@ -295,6 +295,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				straight = 0;
 			}
 		}
+		if (straight >= X) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/* Return sum of all values on the dice */
