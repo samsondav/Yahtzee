@@ -288,7 +288,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		//check case XXYYY
 		if (diceSorted[0] == diceSorted[1] && diceSorted[2] == diceSorted[3] && diceSorted[3] == diceSorted[4]) {
 			return true;
-		
+		}
 		// check case XXXYY
 		if (diceSorted[0] == diceSorted[1] && diceSorted[1] == diceSorted[2] && diceSorted[3] == diceSorted[4]) {
 			return true;
