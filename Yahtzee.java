@@ -53,7 +53,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			
 			turn += 1;
 			// break if we just ended the final turn
-			if (turn > N_TURNS) {
+			if (turn >= N_TURNS) {
 				break;
 			}
 		}
