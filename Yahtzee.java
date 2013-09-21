@@ -315,7 +315,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				straight = 0;
 			}
-			if (straight >= X) return true;
+			if (straight >= X - 1) return true;
 		}
 		
 		// return false by default
