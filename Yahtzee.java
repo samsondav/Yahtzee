@@ -249,13 +249,15 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * 1,2,3,4,5 or 6
 		 */
 		if (categoryIndex == THREE_OF_A_KIND) {
-			int count = 0;
+			int count[] = new int[5];
 			for (int i = 0; i > N_DICE; i++) {
-				for (int)
+				for (int j = 0; j < 6; j++){
+					
+				}
 			}
 		}
 		switch (categoryIndex) {
-		case : 	THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case THREE_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case FOUR_OF_A_KIND: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case FULL_HOUSE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
 		case SMALL_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
