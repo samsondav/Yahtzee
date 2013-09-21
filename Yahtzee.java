@@ -289,7 +289,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		
 		int straight = 0;
 		for (int i = 0; i < N_DICE - 1; i++) {
-			if (dice[i] == dice[i + 1]) {
+			if (dice[i] == dice[i + 1] + 1) {
 				straight += 1;
 			} else {
 				straight = 0;
