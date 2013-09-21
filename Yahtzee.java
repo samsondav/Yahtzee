@@ -294,14 +294,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				straight = 0;
 			}
+			if (straight >= X) return true;
 		}
 		
-		// return true if we found a matching straight
-		if (straight >= X) {
-			return true;
-		} else {
-			return false;
-		}
+		// return false by default
+		 return false;
 	}
 	
 	/* Return sum of all values on the dice */
