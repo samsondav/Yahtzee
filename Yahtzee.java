@@ -166,7 +166,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			
 			// add upper bonus to TOTAL
-			updateTotals();
+			updateTotals(i + 1);
 			
 			// update winningPlayer to player index with highest total
 			// FIXME: This is sloppy and doesn't handle the corner case of a draw or if players
