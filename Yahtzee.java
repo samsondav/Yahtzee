@@ -247,12 +247,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int[]count = new int[5];
 		
 		switch (categoryIndex) {
-		case THREE_OF_A_KIND: return isXOfAKind(3);
-		case FOUR_OF_A_KIND: return isXOfAKind(4);
-		case FULL_HOUSE: return isXOfAKind(5);
-		case SMALL_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
-		case LARGE_STRAIGHT: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
-		case YAHTZEE: return YahtzeeMagicStub.checkCategory(dice, categoryIndex);
+		case THREE_OF_A_KIND: return containsXOfAKind(3);
+		case FOUR_OF_A_KIND: return containsXOfAKind(4);
+		case FULL_HOUSE: 
+		case SMALL_STRAIGHT: return containsStraight(4);
+		case LARGE_STRAIGHT: return containsStraight(5);
+		case YAHTZEE: return containsXOfAKind(5);
 		default: return true;
 		}
 	}
@@ -265,7 +265,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * @return true if dice combo contains at least X of any kind
 	 * @return false if dice combo does NOT
 	 */
-	private boolean isXOfAKind(int X) {
+	private boolean containsXOfAKind(int X) {
 		int counter = 0;
 		for (int i = 0; i < N_DICE; i++) {
 			for (int j = 0; j < i; j++) {
@@ -282,7 +282,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * @param X - length of the straight i.e. 4 for small straight,
 	 * 5 for large straight
 	 */
-	private boolean isStraight(int X) {
+	private boolean containsStraight(int X) {
 		// create sorted copy of dice values
 		int[] diceSorted = Arrays.copyOf(dice, dice.length);
 		Arrays.sort(diceSorted);
